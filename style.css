@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+:root {
+  --main-color: #092952;
+  --border-color: #49a83d;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #fff;
+  color: #130e42;
+  text-align: center;
+}
+
+header > h1 {
+  padding: 10px;
+  font-size: 44px;
+}
+
+body {
+  background-color: var(--main-color);
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+}
+
+#placar-container {
+  border: 3px solid var(--border-color);
+  width: 240px;
+  margin: 20px auto;
+  padding: 12px;
+  text-align: center;
+  font-size: 44px;
+  position: relative;
+  border-radius: 5px;
+}
+
+.label {
+  padding: 5px;
+  font-size: 20px;
+  background-color: #d4223a;
+  position: absolute;
+  border-radius: 5px;
+}
+
+#jogador-label {
+  top: 30%;
+  left: -20%;
+}
+
+#computador-label {
+  top: 30%;
+  right: -30%;
+}
+
+#resultado {
+  text-align: center;
+  font-weight: bold;
+  font-size: 36px;
+}
+
+#jogar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opcao {
+  border: 3px solid var(--border-color);
+  border-radius: 50%;
+  padding: 30px;
+  margin: 40px;
+  cursor: pointer;
+  transition: 0.5s background-color;
+}
+
+.opcao:hover {
+  background-color: #3a5374;
+}
+
+#mensagem {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.opcao img {
+  width: 150px;
+}
+
+@media (max-width: 840px) {
+  header > h1 {
+    font-size: 24px;
+  }
+
+  #resultado {
+    font-size: 18px;
+    padding-bottom: 20px;
+  }
+
+  #placar-container {
+    width: 180px;
+    padding: 6px;
+  }
+
+  .label {
+    font-size: 14px;
+    background-color: #d4223a;
+    position: absolute;
+    border-radius: 5px;
+  }
+
+  #jogador-label {
+    top: 35%;
+    left: -20%;
+  }
+
+  #computador-label {
+    top: 35%;
+    right: -30%;
+  }
+
+  #jogar {
+    flex-direction: column;
+  }
+
+  .opcao {
+    margin: 5px;
+    padding: 14px;
+  }
+
+  #mensagem {
+    font-size: 14px;
+  }
+
+  .opcao img {
+    width: 100px;
+  }
+}
+
+@media (max-height: 645px) {
+  .opcao img {
+    width: 60px;
+  }
+}

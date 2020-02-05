@@ -5,116 +5,56 @@ const pontuacaoJogador = document.getElementById("jogador-pontos");
 const pontuacaoComputador = document.getElementById("computador-pontos");
 const mensagemResultado = document.getElementById("mensagem-resultado");
 
-const possibilidades = ["Pedra", "Papel", "Tesoura"];
 let pontosJogador = parseInt(pontuacaoJogador.innerText);
 let pontosComputador = parseInt(pontuacaoComputador.innerText);
 
-function computadorFazJogada(possibilidades) {
-  let jogadaComputador =
+function computadorFazJogada() {
+  possibilidades = ["Pedra", "Papel", "Tesoura"];
+  jogadaComputador =
     possibilidades[Math.floor(Math.random() * possibilidades.length)];
   return jogadaComputador;
 }
 
-function verificaVencedor(jogadaUsuario, jogadaComputador) {
-  if (jogadaUsuario === "Pedra") {
-    if (jogadaComputador === "Papel") {
-      vencedor = "Computador";
-      mensagem = "Papel enrola pedra.";
-    } else if (jogadaComputador === "Tesoura") {
-      vencedor = "Jogador";
-      mensagem = "Pedra amassa tesoura.";
-    } else {
-      mensagem = "Empate";
-      vencedor = "Empate";
-    }
-  } else if (jogadaUsuario === "Papel") {
-    if (jogadaComputador === "Pedra") {
-      vencedor = "Jogador";
-      mensagem = "Papel enrola pedra.";
-    } else if (jogadaComputador === "Tesoura") {
-      vencedor = "Computador";
-      mensagem = "Tesoura corta papel.";
-    } else {
-      mensagem = "Empate";
-      vencedor = "Empate";
-    }
-  } else if (jogadaUsuario === "Tesoura") {
-    if (jogadaComputador === "Pedra") {
-      vencedor = "Computador";
-      mensagem = "Pedra amassa tesoura.";
-    } else if (jogadaComputador === "Papel") {
-      vencedor = "Jogador";
-      mensagem = "Tesoura corta papel.";
-    } else {
-      mensagem = "Empate";
-      vencedor = "Empate";
-    }
+function jogadorVence() {}
+
+function avaliaJogada(jogadaUsuario, jogadaComputador) {
+  switch (jogadaUsuario + jogadaComputador) {
+    case "PedraTesoura":
+    case "PapelPedra":
+    case "TesouraPapel":
+      console.log("Jogador venceu!");
+      break;
+    case "PedraPapel":
+    case "PapelTesoura":
+    case "TesouraPedra":
+      console.log("Computador venceu!");
+      break;
+    case "PedraPedra":
+    case "PapelPapel":
+    case "TesouraTesoura":
+      console.log("Empate!");
+      break;
   }
-  return [vencedor, mensagem];
 }
 
-pedraJogada.addEventListener("click", function() {
-  let opcaoUsuario = "Pedra";
-  let opcaoComputador = computadorFazJogada(possibilidades);
-  resultadoVencedor = verificaVencedor(opcaoUsuario, opcaoComputador);
-  vencedor = resultadoVencedor[0];
-  mensagem = resultadoVencedor[1];
-  if (vencedor === "Jogador") {
-    mensagemResultado.innerText = mensagem + " Você venceu!";
-    pedraJogada.style.borderColor = "#49a83d";
-    pontosJogador += 1;
-    pontuacaoJogador.innerText = pontosJogador.toString();
-  } else if (vencedor === "Computador") {
-    mensagemResultado.innerText = mensagem + " Você perdeu!";
-    pedraJogada.style.borderColor = "#d9183b";
-    pontosComputador += 1;
-    pontuacaoComputador.innerText = pontosComputador.toString();
-  } else {
-    mensagemResultado.innerText = "Empate!";
-    pedraJogada.style.borderColor = "#FFF";
-  }
-});
+function main() {
+  pedraJogada.addEventListener("click", function() {
+    jogadaUsuario = "Pedra";
+    jogadaComputador = computadorFazJogada();
+    avaliaJogada(jogadaUsuario, jogadaComputador);
+  });
 
-papelJogada.addEventListener("click", function() {
-  let opcaoUsuario = "Papel";
-  let opcaoComputador = computadorFazJogada(possibilidades);
-  resultadoVencedor = verificaVencedor(opcaoUsuario, opcaoComputador);
-  vencedor = resultadoVencedor[0];
-  mensagem = resultadoVencedor[1];
-  if (vencedor === "Jogador") {
-    mensagemResultado.innerText = mensagem + " Você venceu!";
-    papelJogada.style.borderColor = "#49a83d";
-    pontosJogador += 1;
-    pontuacaoJogador.innerText = pontosJogador.toString();
-  } else if (vencedor === "Computador") {
-    mensagemResultado.innerText = mensagem + " Você perdeu!";
-    papelJogada.style.borderColor = "#d9183b";
-    pontosComputador += 1;
-    pontuacaoComputador.innerText = pontosComputador.toString();
-  } else {
-    mensagemResultado.innerText = "Empate!";
-    papelJogada.style.borderColor = "#FFF";
-  }
-});
+  papelJogada.addEventListener("click", function() {
+    jogadaUsuario = "Papel";
+    jogadaComputador = computadorFazJogada();
+    avaliaJogada(jogadaUsuario, jogadaComputador);
+  });
 
-tesouraJogada.addEventListener("click", function() {
-  let opcaoUsuario = "Tesoura";
-  let opcaoComputador = computadorFazJogada(possibilidades);
-  resultadoVencedor = verificaVencedor(opcaoUsuario, opcaoComputador);
-  vencedor = resultadoVencedor[0];
-  mensagem = resultadoVencedor[1];
-  if (vencedor === "Jogador") {
-    mensagemResultado.innerText = mensagem + " Você venceu!";
-    tesouraJogada.style.borderColor = "#49a83d";
-    pontosJogador += 1;
-    pontuacaoJogador.innerText = pontosJogador.toString();
-  } else if (vencedor === "Computador") {
-    mensagemResultado.innerText = mensagem + " Você perdeu!";
-    tesouraJogada.style.borderColor = "#d9183b";
-    pontosComputador += 1;
-    pontuacaoComputador.innerText = pontosComputador.toString();
-  } else {
-    mensagemResultado.innerText = "Empate!";
-    tesouraJogada.style.borderColor = "#FFF";
-  }
-});
+  tesouraJogada.addEventListener("click", function() {
+    jogadaUsuario = "Tesoura";
+    jogadaComputador = computadorFazJogada();
+    avaliaJogada(jogadaUsuario, jogadaComputador);
+  });
+}
+
+main();

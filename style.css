@@ -1,8 +1,9 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
 :root {
   --main-color: #092952;
-  --border-color: #49a83d;
+  --border-green-color: #49a83d;
+  --border-red-color: #d4223a;
 }
 
 * {
@@ -24,12 +25,12 @@ header > h1 {
 
 body {
   background-color: var(--main-color);
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #fff;
 }
 
 #placar-container {
-  border: 3px solid var(--border-color);
+  border: 3px solid var(--border-green-color);
   width: 240px;
   margin: 20px auto;
   padding: 12px;
@@ -42,7 +43,7 @@ body {
 .label {
   padding: 5px;
   font-size: 20px;
-  background-color: #d4223a;
+  background-color: var(--border-red-color);
   position: absolute;
   border-radius: 5px;
 }
@@ -70,7 +71,7 @@ body {
 }
 
 .opcao {
-  border: 3px solid var(--border-color);
+  border: 3px solid var(--border-green-color);
   border-radius: 50%;
   padding: 30px;
   margin: 40px;
@@ -89,6 +90,20 @@ body {
   font-weight: bold;
 }
 
+.borda-vitoria {
+  border: 4px solid var(--border-green-color);
+  box-shadow: 0px 2px 10px;
+}
+
+.borda-derrota {
+  border: 4px solid var(--border-red-color);
+  box-shadow: 0px 2px 10px;
+}
+
+.borda-empate {
+  border: 4px solid #333333;
+  box-shadow: 0px 2px 10px;
+}
 .opcao img {
   width: 150px;
 }

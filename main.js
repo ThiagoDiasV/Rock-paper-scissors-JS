@@ -56,7 +56,6 @@ function avaliaJogada(jogadaUsuario, jogadaComputador) {
       vencedor = "Ninguem";
       break;
   }
-  console.log(vencedor);
 
   return vencedor;
 }
